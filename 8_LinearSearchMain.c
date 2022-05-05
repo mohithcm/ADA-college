@@ -15,10 +15,13 @@ int search(int arr[], int key, int size){
 void main(){
     FILE *fp, *b, *w, *a;
     int arr[100], count = 0, key;
+    
+    // Deleles previously generated files
     system("rm Rand.txt");
     system("rm Linear_B.txt");
     system("rm Linear_A.txt");
     system("rm Linear_W.txt");
+
     fp = fopen("Rand.txt", "a");
     b = fopen("Linear_B.txt", "a");
     a = fopen("Linear_A.txt", "a");
