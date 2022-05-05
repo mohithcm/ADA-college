@@ -44,11 +44,11 @@ void main(){
         fprintf(b, "%d  %d\n", i, search(arr, key, i));
 
         // Average Case
-        key = arr[i/4];
+        key = arr[i/4] = 346;
         fprintf(a, "%d  %d\n", i, search(arr, key, i));
 
         // Worst Case
-        key = arr[0] = 0;
+        key = arr[0];
         fprintf(w, "%d  %d\n", i, search(arr, key, i));
 
         for (int j = 0; j<i; j++)
