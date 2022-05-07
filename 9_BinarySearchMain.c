@@ -53,7 +53,7 @@ void main(){
 
         for (int j = 0; j<i; j++)
             fprintf(fp, "%d  ", arr[j]);
-        fprintf(fp, "Key >> %d\n\n", key);
+        fprintf(fp,"\n\n");
     }
 
     fclose(a);
