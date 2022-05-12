@@ -3,7 +3,7 @@
 #include<time.h>
 
 // Bubble Sort Function
-int bubble(int arr[], int key, int size){
+int bubble(int arr[], int size){
     int count = 0, flag = 0;
     for (int i=0; i<size-1; i++){
         for (int j=0; j<size-1-i; j++){
@@ -47,28 +47,25 @@ void main(){
         srand(time(0));
 
         // Worst Case
-        for (int j = 0; j<i; j+=1)
+        for (int j = 0; j<i; j+=1){
             arr[j]= (j==0) ? rand()%10 : arr[j-1] - rand()%10;
-        fprintf(w, "%d  %d\n", i, bubble(arr, key, i));
-
-        for (int j = 0; j<i; j++)
             fprintf(rw, "%d  ", arr[j]);
+        }
+        fprintf(w, "%d  %d\n", i, bubble(arr, i));
 
         // Best case
-        for (int j = 0; j<i; j+=1)
+        for (int j = 0; j<i; j+=1){
             arr[j]= (j==0) ? rand()%10 : arr[j-1] + rand()%10;
-        fprintf(b, "%d  %d\n", i, bubble(arr, key, i));
-
-        for (int j = 0; j<i; j++)
             fprintf(rb, "%d  ", arr[j]);
+        }
+        fprintf(b, "%d  %d\n", i, bubble(arr, i));
 
         // Average Case
-        for (int j=i/2; j<i; j++)
+        for (int j=i/2; j<i; j++){
             arr[j] = rand()%10;
-        fprintf(a, "%d  %d\n", i, bubble(arr, key, i));
-
-        for (int j = 0; j<i; j++)
             fprintf(ra, "%d  ", arr[j]);
+        }
+        fprintf(a, "%d  %d\n", i, bubble(arr, i));
         
         fprintf(ra, "\n\n");
         fprintf(rb, "\n\n");
