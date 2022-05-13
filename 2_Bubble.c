@@ -43,7 +43,7 @@ void main(){
     fprintf(rb, "Random Number Generated (Best Case) >>\n");
     fprintf(rw, "Random Number Generated (Worst Case) >>\n");
 
-    for (int i = 10; i<=1000; i+=10){
+    for (int i = 100; i<=1000; i+=100){
         srand(time(0));
 
         // Worst Case
