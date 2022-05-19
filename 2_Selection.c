@@ -7,7 +7,7 @@ int selection(int arr[], int size){
     int count = 0, flag , index, temp,min, i, j;
 
     for(i = 0; i<size-1; i++){
-        min = arr[i];
+        min = arr[i];  
         flag = 0;
         index = i;
 
