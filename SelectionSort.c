@@ -33,7 +33,7 @@ void main(){
             arr[i]=temp;
         }
 
-        if (flag == 1)
+        if (flag == 0)
             break;
     }
 
