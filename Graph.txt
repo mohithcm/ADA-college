@@ -1,7 +1,7 @@
-set title "BUBBLE SORT"
-set xrange [0: 1400]
-set yrange [-30000: 520000]
+set title "SELECTION SORT"
+set xrange [0: 140]
+set yrange [-30: 3000]
 set xlabel "Input Size(n)"
 set ylabel "Operational Count"
 set style data line
-plot "BUBBLE_A.txt" using 1:2 title "AVERAGE CASE", "BUBBLE_B.txt" using 1:2 title "BEST CASE", "BUBBLE_W.txt" using 1:2 title "WORST CASE"
+plot "SELECTION_A.txt" using 1:2 title "AVERAGE CASE", "SELECTION_B.txt" using 1:2 title "BEST CASE", "SELECTION_W.txt" using 1:2 title "WORST CASE"
