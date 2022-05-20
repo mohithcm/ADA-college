@@ -14,7 +14,6 @@ int selection(int arr[], int size){
         for(j = i+1; j<size; j++){
             count+=1;  // Incrementing count
             if (min > arr[j]){
-                flag = 1;
                 min = arr[j];
                 index = j;     // Finding index of minimum element   
             }
@@ -27,8 +26,6 @@ int selection(int arr[], int size){
             arr[i] = temp;
         }
 
-        if(flag == 0)    // If array becomes sorted
-            return count;
     }
     return count;
 }
