@@ -1,0 +1,7 @@
+set title "String Matching"
+set xlabel "Input Size(n)"
+set ylabel "Operational Count"
+set xrange [-200:1200]
+set yrange [-2000:4200]
+set style data line
+plot "BEST_S.txt" using 1:2 title "BEST CASE", "AVERAGE_S.txt" using 1:2 title "AVERAGE CASE", "WORST_S.txt" using 1:2 title "WORST CASE"

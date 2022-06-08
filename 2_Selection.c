@@ -32,7 +32,7 @@ int selection(int arr[], int size){
 
 void main(){
     FILE *rb, *rw, *ra, *b, *w, *a;
-    int arr[100], count = 0, key;
+    int arr[1000], count = 0, key;
     
     // Deleles previously generated files
     system("rm Rand_B.txt");
@@ -52,7 +52,7 @@ void main(){
     fprintf(rb, "Random Number Generated (Best Case) >>\n");
     fprintf(rw, "Random Number Generated (Worst Case) >>\n");
 
-    for (int i = 10; i<=100; i+=10){
+    for (int i = 100; i<=1000; i+=100){
         srand(time(0));
 
         // Worst Case
