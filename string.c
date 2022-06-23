@@ -36,13 +36,16 @@ void main(){
 		str[n-1] = 1;
 		pat[0] = pat[1] = pat[2] = 0;
 		pat[3] = 1;
+		// pat = 0001
 		fprintf(w, "%d  %d\n", n, match(str, pat, n, 4));  // Worst Case
 		
 		pat[3] = 0;
+		// pat = 0000
 		fprintf(b, "%d  %d\n", n, match(str, pat, n , 4));  // Best Case
 		
-		str[n/2] = str[n/2 + 1] = 1;
+		str[n/2] = str[n/2 + 1] = 1; // 0000..0011....00000 -> string
 		pat[2] = pat[3] = 1;
+		// pat = 0011
 		fprintf(a, "%d  %d\n", n, match(str, pat,n , 4));  // Average Case
 	}
 	fclose(b);
