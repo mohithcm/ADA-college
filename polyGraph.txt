@@ -1,7 +1,0 @@
-set title "Polynomial Evaluation"
-set xlabel "Input Size(n)"
-set ylabel "Operational Count"
-set xrange [-200:1200]
-set yrange [-200:1500]
-set style data line
-plot "Count.txt" using 1:2 title ""

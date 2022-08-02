@@ -1,7 +1,0 @@
-set title "SELECTION SORT"
-set xrange [-200: 1200]
-set yrange [-20000: 520000]
-set xlabel "Input Size(n)"
-set ylabel "Operational Count"
-set style data line
-plot "SELECTION_A.txt" using 1:2 title "AVERAGE CASE", "SELECTION_B.txt" using 1:2 title "BEST CASE", "SELECTION_W.txt" using 1:2 title "WORST CASE"
