@@ -1,6 +1,6 @@
 set title "Sorting algo"
 set xrange [-10: 120]
-set yrange [-100: 1400]
+set yrange [-100: 10000]
 set xlabel "Input size (N)"
 set ylabel "Operational count (C(N))"
 set style data line
