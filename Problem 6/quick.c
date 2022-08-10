@@ -66,7 +66,7 @@ void main(){
         count = 0;
 
         // avg case
-        for(int i = 0; i<n; ++i)
+        for(int i = 0; i<n/2; ++i)
             arr[i] = rand()%10000000;
         divide(arr, 0, n-1);
         fprintf(a, "%d  %d\n", n, count);
