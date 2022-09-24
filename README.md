@@ -1,2 +1,2 @@
 # ADA-college
-TEST / EXAM Questions of ADA lab 
+Few Programs related to Analysis and Design of Algorithms 
