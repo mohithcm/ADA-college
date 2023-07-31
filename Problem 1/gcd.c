@@ -1,61 +1,72 @@
 #include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
 
-int gcd;
-
-int mod(int a , int b){
-    int count = 0;
-    int r = 1;
+int gcd1(int a,int b){
+    int r,count=0;
     while(r!=0){
-        r = a%b;
-        a = b;
-        b = r;
-        ++count;
+        count++;
+        r=a%b;
+        a=b;
+        b=r;
     }
-    gcd = a;
     return count;
 }
 
-int sub(int a, int b){
-    int count = 0;
-    while ( b != 0){
-        ++count;
-        if ( a > b )
-            a = a - b;
+int gcd2(int a,int b){
+    int count=0;
+    while(a!=b){
+        if(a>b)
+          a=a-b;
         else
-            b = b - a;
+         b=b-a;
+        count++;
     }
-    gcd = a;
     return count;
 }
 
-int repeat(int a, int b){
-    int count = 0, min, temp;
-    if ( a < b)
-        min = a;
-    else 
-        min = b;
-
-    while(min != 1){
-        ++count;
-        temp = a%min;
-        if ( temp == 0){
-            temp = b%min;
-            if ( temp == 0)
-                break;
+int gcd3(int a,int b){
+    int r,count=0,t1,t2;
+    if(a<b)
+      r=a;
+    else
+      r=b;
+    while(r!=1){
+        count++;
+        t1=a%r;
+        if(t1==0){
+          t2=b%r;
+          if(t2==0)
+            return count;
         }
-        --min;
+        r=r-1;
     }
-    gcd = min;
     return count;
 }
 
 void main(){
-    int a, b;
-    printf("Enter 2 numbers >> ");
-    scanf("%d %d", &a, &b);
-
-    printf("\nCount for Modulo >> %d\n", mod(a, b));
-    printf("Count for Subtraction >> %d\n", sub(a, b));
-    printf("Count for Int check > %d\n", repeat(a, b));
-    printf("\nGCD >> %d\n", gcd);
+    FILE *fp1;
+    int a,b,g;
+    srand(time(0));
+    system("rm mod.txt;    rm sub.txt;   rm cosint.txt");
+    printf("Modulo\t Subtraction\t Consecutive integer\n");
+    for(int i=0;i<10;i++){
+        a=rand()%100;
+        b=rand()%100;
+        fp1=fopen("mod.txt","a");
+        fprintf(fp1,"%d\t",(i+1));
+        g=gcd1(a,b);
+        fprintf(fp1,"%d\n",g);
+        fclose(fp1);
+        fp1=fopen("sub.txt","a");
+        fprintf(fp1,"%d\t",(i+1));
+        g=gcd2(a,b);
+        fprintf(fp1,"%d\n",g);
+        fclose(fp1);
+        fp1=fopen("cosint.txt","a");
+        fprintf(fp1,"%d\t",(i+1));
+        g=gcd3(a,b);
+        fprintf(fp1,"%d\n",g);
+        fclose(fp1);
+    }
 }
