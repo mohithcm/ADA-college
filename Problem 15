@@ -25,6 +25,7 @@ void dijkstra(int graph[MAX][MAX], int n, int start, int distance[]) {
     }
 }
 int main() {
+analysis();
     int graph[MAX][MAX];
     int n, start;
     printf("Enter the number of vertices: ");
@@ -41,4 +42,15 @@ int main() {
     for (int i = 0; i < n; ++i)
         printf("Vertex %d -> Distance: %d\n", i, distance[i]);
     return 0;
+}
+#define n1 4
+#define n2 8
+void analysis() {
+int n;
+FILE *f;
+f = fopen("BC.txt", "a");
+for (n = n1; n <= n2; n += 1) {
+fprintf(f, "%d\t%d\n", n, (n*n));
+}
+fclose(f);
 }
