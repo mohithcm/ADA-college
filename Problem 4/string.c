@@ -1,7 +1,7 @@
 #include<stdlib.h>
 #include<stdio.h>
 
-int stringMatch(int txt[], int pat[], int n, int m){
+int stringMatch(char *txt, char *pat, int n, int m){
     int count = 0, j = 0;
 
     for(int i = 0; i<n-m; ++i){
@@ -25,20 +25,20 @@ void main(){
     w = fopen("worst.txt", "a");
 
     for(int n = 10; n<=100; n+=10){
-        int *txt = (int *)calloc(sizeof(int), n);
-
+        char *txt = (char *)calloc(sizeof(char), n);
+        for(int i=0;i<n;i++)
+          txt[i]='a';
         // best case
-        int pat[4] = {0, 0, 0, 0};
+        char* pat = "aaaa";
         fprintf(b, "%d  %d\n", n, stringMatch(txt, pat, n, 4));
 
         // worst case
-        txt[n-1] = pat[3] = 1;
+        pat = "aaab";
         fprintf(w, "%d  %d\n", n, stringMatch(txt, pat, n, 4));
 
         // avg case
-        txt[n/2] = txt[n/2 + 1] = pat[2] = 1;
+        pat= "abab";
         fprintf(a, "%d  %d\n", n, stringMatch(txt, pat, n, 4));
     }
     fclose(a);  fclose(b);  fclose(w);
-    system("gnuplot -p -c plot.txt");
 }
