@@ -1,0 +1,11 @@
+#define n1 4
+#define n2 8
+void analysis() {
+int n;
+FILE *f;
+f = fopen("BC.txt", "a");
+for (n = n1; n <= n2; n += 1) {
+fprintf(f, "%d\t%d\n", n, (n*n));
+}
+fclose(f);
+}
