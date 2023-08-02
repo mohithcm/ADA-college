@@ -1,35 +1,85 @@
-#include<stdio.h>
-#include<stdlib.h>
-
-int n, stk[20], tos = -1;
-
-void dfs(int graph[][n], int cur, int *vis){
-    vis[cur] = 1;
-    for(int next = 0; next<n; ++next){
-        if ( graph[cur][next] && !vis[next] )
-            dfs(graph, next, vis);
-    }
-    stk[++tos] = cur;
-}
-
-void main(){
-    printf("Enter num of vertices >>");
-    scanf("%d", &n);
-
-    int graph[n][n];
-
-    printf("Enter adjacency matrix of DAG >>");
-    for(int i = 0; i<n; ++i)
+#include <stdio.h>
+#include <stdlib.h>
+#define n1 4
+#define n2 8
+int graph[10][10], visited[10], indegree[10], n, cnt;
+void sourcetopo() {
+for(int i = 0; i<n; ++i)
         for(int j = 0; j<n; ++j)
-            scanf("%d", &graph[i][j]);
-
-    int *vis = (int *)calloc(sizeof(int), n);
-
-    for(int i = 0; i<n; ++i)
-        if ( !vis[i] )
-            dfs(graph, i, vis);
+            indegree[i] += graph[j][i];
 
     printf("Topological sorting >> \n");
-    for(int i = tos; i>-1; --i)
-        printf("%d  ", stk[i]);
+    for(int i = 0; i<n; ++i){
+        for(int j = 0; j<n; ++j){
+            cnt++;
+            if (!indegree[j] && !visited[j]){
+                printf("%d  ", j);
+                visited[j] = 1;
+
+                for(int k = 0; k<n; ++k){
+                    if ( graph[j][k] ){
+                        --indegree[k];
+                        graph[j][k] = 0;
+                    }
+                }
+            }
+        }
+    }
+}
+void correctness() {
+printf("Enter no. of vertices: ");
+
+scanf("%d", &n);
+printf("Enter adjacency matrix:\n");
+for (int i = 0; i < n; i++)
+for (int j = 0; j < n; j++)
+scanf("%d", &graph[i][j]);
+for (int i = 0; i < n; i++) {
+visited[i] = 0;
+indegree[i] = 0;
+}
+sourcetopo();
+}
+void analysis() {
+int i, j;
+FILE *f;
+f = fopen("BC.txt", "a");
+for (n = n1; n <= n2; n += 1) {
+for (i = 0; i < n; i++)
+for (j = 0; j < n; j++)
+if (i == j - 1)
+graph[i][j] = 1;
+else
+graph[i][j] = 0;
+for (i = 0; i < n; i++) {
+visited[i] = 0;
+indegree[i] = 0;
+}
+cnt = 0;
+sourcetopo();
+fprintf(f, "%d\t%d\n", n, cnt);
+} //system("gnuplot>load 'command.txt'");
+fclose(f);
+}
+void main() {
+int ch;
+printf("1.analysis\t\t2.correctness\t\t0.exit\n");
+for (;;) {
+printf("\nenter choice: ");
+scanf("%d", &ch);
+switch (ch) {
+case 1:
+analysis();
+break;
+case 2:
+correctness();
+break;
+case 0:
+printf("exiting..\n");
+exit(0);
+default:
+printf("wrong choice!!\n");
+break;
+}
+}
 }
